@@ -1,0 +1,190 @@
+<html lan="en">
+
+<head>
+    <title>Customer LogIn Page</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<style>
+    .kibble-logo{
+      max-width: 200px;
+    }
+    
+    body, #container{
+        background-color:#5A6054;
+    
+    }
+    .br{
+      background-color:#5A6054;
+    
+    }
+    #bootstrap-overrides .col-6{
+    max-width: 12%;
+    }
+    .row{
+        background-color: #F5F5F4;
+    }
+    
+    .list-group{
+        width:140px;
+        border: 2px solid #58554E;
+    }
+    
+    .home_button{
+        margin-left: 15px;
+    }
+    
+    .logo{
+        margin-right:20px;
+    }
+    .p{
+        margin-left: none;
+    }
+    form{
+        vertical-align: top;
+        display: block;
+        padding:30px;
+        background-color: 
+    }
+
+#bootstrap-overrides form{
+        background-color: #F5F5F4;
+        border: solid 2px #C1A07F;;
+        border-radius: 15px;
+        padding: 30px;
+        max-width: 500px;
+        margin: 30px;
+}
+.error{
+    color: rgb(236, 48, 48);
+    background-color: whitesmoke;
+    max-width: 300px;
+    border: red solid 2px;
+    border-radius: 15px;
+    padding: 5px;
+}
+tr{
+    background-color: #F5F5F4;
+}
+table{
+    max-width: 1200px;
+    margin:20px;
+
+}
+</style>
+
+<body id="bootstrap-overrides">
+
+
+
+    <div id=container>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <img class="kibble-logo" src="../static/images/kibble_logo.png" alt="kibble_logo">
+            <a class="navbar-brand" class="home_button" href="#">Home/Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="/logout">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
+
+        <form action="/add_appt" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <h5>Create an appointment</h5>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Patient Name</label>
+                    <input type='text' class="form-control" id="exampleInputPassword1" name="patient" placeholder="Full Patient Name">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Reason for visit</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" name="reason" placeholder="Enter reason here">
+                </div>
+
+                <p>Date</p><input type="text" class="form-control" name="date" placeholder="mm/dd/yy"> <br> <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+    </div>
+</body>
+<h5>Appointments(need approval)</h5>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Reason for visit</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for appointment in appointments %}
+        {% if appointment.uploader.id == request.session.adminid and appointment.approve == False %}
+        <tr>
+
+            <td>{{appointment.patient}} </td>
+            <td>{{appointment.reason}}</td>
+            <td>{{appointment.date}}</td>
+            <td><a href="/destroy/{{appointment.id}}" role="button">Remove</a> |<a href="/edit/{{appointment.id}}" role="button">Edit</a>
+                |<a href="/approve/{{appointment.id}}">Approve</a> </td>
+
+
+        </tr>
+
+        {% endif %}
+        {% endfor %}
+    </tbody>
+
+</table>
+<br>
+
+<h5>Approved appointments:</h5>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Reason for visit</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tr>
+        {% for appointment in appointments %}
+        {% if appointment.approve == True %}
+
+
+        <td>{{appointment.patient}} </td>
+        <td>{{appointment.reason}}</td>
+        <td>{{appointment.date}}</td>
+
+
+
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+
+</table>
+</body>
+
+</html>

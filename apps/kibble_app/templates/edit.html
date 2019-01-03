@@ -1,0 +1,143 @@
+
+<html lan="en">
+
+        <head>
+            <title>Customer LogIn Page</title>
+            <meta charset="UTF-8">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+                crossorigin="anonymous">
+        </head>
+        <style>
+            .kibble-logo{
+          max-width: 200px;
+        }
+        
+        body, #container{
+            background-color:#5A6054;
+        
+        }
+        .br{
+          background-color:#5A6054;
+        
+        }
+        #bootstrap-overrides .col-6{
+        max-width: 12%;
+        }
+        #bootstrap-overrides .profile_pic{
+            border: solid rgba(0, 0, 0, 0.557) 1px;
+        }
+        .row{
+            background-color: #F5F5F4;
+        }
+        
+        .list-group{
+            width:140px;
+            border: 2px solid #58554E;
+        }
+        
+        .home_button{
+            margin-left: 15px;
+        }
+        
+        .logo{
+            margin-right:20px;
+        }
+        .p{
+            margin-left: none;
+        }
+        form{
+            vertical-align: top;
+            display: inline-block;
+            padding:30px;
+        }
+        #appt_table{
+        
+            vertical-align: top;
+            display: inline-block;
+            margin: 10px;
+            background-color: #F5F5F4;
+            border-radius: 10px;
+            width:70%;
+            padding:20px;
+        }
+        #bootstrap-overrides form{
+        background-color: #F5F5F4;
+        border: solid 2px #C1A07F;;
+        border-radius: 15px;
+        padding: 30px;
+        max-width: 500px;
+        margin: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+}
+        
+        </style>
+        
+        <body id="bootstrap-overrides">
+        
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            
+            <div id=container>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="logo">
+                        <img class="kibble-logo" src="../static/images/kibble_logo.png" alt="kibble_logo">
+                    </a>
+                    <a class="navbar-brand" class="home_button" href="#">Home/Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+        
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="/logout">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+        
+        
+        
+        
+                <form action="/update/{{appointments.id}}/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Patient Name</label>
+                        <input type='text' class="form-control" id="exampleInputPassword1" name="patient" value="{{appointments.patient}}">
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Reason for visit</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="reason" value ="{{appointments.reason}}">
+                    </div>
+                    
+                    <p>Date</p>
+                    <input type="text" class="form-control" name="date" value="{{appointments.date}}"><br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/admin_dashboard"><button type="button" class="btn btn-primary">Back</button></a>
+                </form>
+                
+            </div>
+        
+            </div>
+        
+            </div>
+        </body>
+        
+    </body>
+        </html>
+    
+    
+    
+        

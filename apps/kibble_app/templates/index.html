@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href=Project_1.css>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<script>
+
+$("#scroll").click(function() {
+  $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+
+});​
+</script>
+
+<style>
+
+body{
+    background-color:#5A6054;
+}
+
+#portal_login{
+    margin-left:auto;
+}
+.jumbotron{
+    
+    border-radius: 15px;
+    margin:10px;
+    background-image: url("../static/images/brown-pup-2.jpg");
+    object-fit: cover;
+    border: solid 2px #58554E;
+    max-width: 100%;
+    height: 500px;
+    background-color: #58554E; 
+    background-repeat: no-repeat;
+}
+
+#shortcut{
+    margin:center;
+}
+.navbar{
+    border-radius: 10px;
+    margin: 10px;
+}
+.logo{
+    max-width: 100%;
+    border-radius: 15px;
+    margin:-20px;
+    
+}
+.card{
+    background-color:#C1A07F;
+    padding: 10px;
+    border-radius: 15px;
+    image-orientation: center;
+
+
+}
+.kibble_logo{
+    opacity:0.3;
+    border-radius: 15px;
+    margin-left: 900px;
+    max-width: 30%;
+    
+}
+.card-img-top{
+    max-width: 150px;
+    border-radius: 100px;
+    margin:auto;
+    border: #58554E solid 2px;
+    
+}
+#card{
+
+}
+
+#scroll{
+    width: 150px;
+    opacity: 0.7;
+}
+h5{
+    text-align: center;
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #58554E
+}
+#bootstrap-overrides a{
+    text-decoration: none;
+}
+
+#card {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.3s;   
+    display: inline-block;
+    vertical-align: top;
+    margin:40px;
+    
+}
+
+#card:hover {opacity: 1}
+
+
+
+
+</style>
+
+<body id="bootstrap-overrides">
+    <div id=container>
+        <div class="jumbotron">
+            <img class="kibble_logo" src="../static/images/kibble_logo.png" alt="kibble_logo">
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div id="card">
+                    <a href="/parent">
+                        <div class="col-sm one">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="../static/images/card-dog-1.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Patient Log In</h5>
+                                    <p class="card-text"></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div id="card">
+                    <a href="/admin">
+                        <div class="col-sm two">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="../static/images/card-dog-2.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Admin Log In</h5>
+                                    <p class="card-text"></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div id="card">
+                    <a href="/faq">
+                        <div class="col-sm three">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="../static/images/card-dog-3.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">FAQ</h5>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<html>
